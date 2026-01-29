@@ -1,3 +1,4 @@
+
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 d=pd.read_csv("Sport car price.csv")
@@ -68,6 +69,7 @@ def recommad(Time,Price,Power):
     s_m.add(s_c_m)
     for i in c_l:
         idx=i[0]
+        score=i[1]
         c_m=d_n.iloc[idx]["Car Model"]
         c_n=d_n.iloc[idx]["Car Name"]
 
@@ -80,6 +82,6 @@ def recommad(Time,Price,Power):
             break
     print("\nRecommended: ")    
     for idx in rd:
-        print(f"\n Car Name:  {d_n.iloc[idx]['Car Name']}\n Car Model:  {d_n.iloc[idx]['Car Model']}\n 0-60 MPH Time (seconds): {d_n.iloc[idx]['0-60 MPH Time (seconds)']}\n Price (in USD): {d_n.iloc[idx]['Price (in USD)']}")
-
+        print(f"\n Car Name:  {d_n.loc[idx,'Car Name']}\n Car Model:  {d_n.loc[idx,'Car Model']}\n 0-60 MPH Time (seconds): {d_n.loc[idx,'0-60 MPH Time (seconds)']}\n Price (in USD): {d_n.loc[idx,'Price (in USD)']}")
+        print(f"Similarity Score: {score:.4f}")
 recommad(Time=6.5,Price=50000,Power='petrol')
