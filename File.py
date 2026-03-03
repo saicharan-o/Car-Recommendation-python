@@ -1,6 +1,7 @@
-
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics.pairwise import cosine_similarity
 d=pd.read_csv("Sport car price.csv")
 d["Price (in USD)"]=d["Price (in USD)"].apply(lambda x:[i.replace('""','') for i in x])
 d["Price (in USD)"]=d["Price (in USD)"].apply(lambda x:[i.replace(',','') for i in x])
@@ -36,14 +37,14 @@ d_e["Car Name"]=c.fit_transform(d_e["Car Name"])
 d_e["Powertrain"]=c.fit_transform(d_e["Powertrain"])
 d_e["Car Model"]=c.fit_transform(d_e["Car Model"])
 print(d_e.head())
-from sklearn.preprocessing import MinMaxScaler
+
 features = ["0-60 MPH Time (seconds)", "Price (in USD)", "Horsepower", "Torque (lb-ft)"]
 for col in features:
     d[col] = pd.to_numeric(d[col], errors='coerce')
 scaler = MinMaxScaler()
 d_e = scaler.fit_transform(d[features].fillna(0))
 print("DATE:",d_e)
-from sklearn.metrics.pairwise import cosine_similarity
+
 s=cosine_similarity(d_e)
 
 def recommad(Time,Price,Power):
@@ -84,4 +85,7 @@ def recommad(Time,Price,Power):
     for idx in rd:
         print(f"\n Car Name:  {d_n.loc[idx,'Car Name']}\n Car Model:  {d_n.loc[idx,'Car Model']}\n 0-60 MPH Time (seconds): {d_n.loc[idx,'0-60 MPH Time (seconds)']}\n Price (in USD): {d_n.loc[idx,'Price (in USD)']}")
         print(f"Similarity Score: {score:.4f}")
-recommad(Time=6.5,Price=50000,Power='petrol')
+
+recommad(Time=6.5,Price=500000,Power='petrol')
+recommad(Time=4.5,Price=200000,Power='Electric')
+recommad(Time=4.6,Price=340000,Power='petrol')
