@@ -1,0 +1,26 @@
+{
+  "name": "car-recommendation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && node server.js",
+    "client": "cd frontend && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saicharan-o/Car-Recommendation-python.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/saicharan-o/Car-Recommendation-python/issues"
+  },
+  "homepage": "https://github.com/saicharan-o/Car-Recommendation-python#readme",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
