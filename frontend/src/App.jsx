@@ -3,53 +3,85 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  const [prefs, setPrefs] = useState({ time: 4.7, price: 10000, power: 'Petrol' });
+  const [prefs, setPrefs] = useState({ time: 3.5, price: 100000 });
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const findCars = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.post('http://localhost:5001/api/recommend', prefs);
+  setLoading(true);
+  setCars([]); // Clear old results
+  
+  try {
+    const res = await axios.post('http://localhost:5001/api/recommend', prefs);
+    
+    // Check if Python returned an empty list []
+    if (res.data && res.data.length > 0) {
       setCars(res.data);
-    } catch (err) {
-      alert("Error: Make sure your Backend is running!");
-    } finally {
-      setLoading(false);
+    } else {
+      // THIS IS YOUR CUSTOM MESSAGE
+      alert("No cars found matching your requirements in our dataset. Please try a different budget or speed range!");
     }
-  };
+  } catch (err) {
+    alert("Backend Error: Please check if server.js is running.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="main-container">
-      <h1><span style={{color: '#e63946'}}>🏎️</span> Sport Car Recommender</h1>
+    {/* CUSTOM ERROR TOAST */}
+    {error && <div className="error-toast">{error}</div>}
+      <h1>🏎️ Sport Car Recommender</h1>
       
       <div className="form-box">
-        <div className="form-group">
-          <label>0-60 MPH: {prefs.time}s</label>
-          <input type="range" min="2" max="10" step="0.1" value={prefs.time}
-            onChange={e => setPrefs({...prefs, time: e.target.value})} />
-        </div>
+        {/* --- REPLACED START --- */}
+       <div className="form-group">
+  <label>Target 0-60 MPH: <strong>{prefs.time}s</strong></label>
+  <input 
+    type="range" 
+    min="1.8"   // Least value in CSV (Rimac)
+    max="7.0"   // High end for sport cars in CSV
+    step="0.1" 
+    value={prefs.time}
+    onChange={e => setPrefs({...prefs, time: Number(e.target.value)})} 
+  />
+</div>
 
-        <div className="form-group">
-          <label>Budget (USD)</label>
-          <input type="number" value={prefs.price} 
-            onChange={e => setPrefs({...prefs, price: e.target.value})} />
-        </div>
+       <div className="form-group">
+  <label>Max Budget (USD)</label>
+  <input 
+    type="number" 
+    min="30000"     // Least price in CSV (approx)
+    max="4000000"   // Highest price (Bugatti is 3.9M)
+    value={prefs.price} 
+    placeholder="e.g. 500000"
+    onChange={e => {
+        let val = Number(e.target.value);
+        // If user tries to go above the highest car in data, cap it at 4M
+        if(val > 4000000) val = 4000000; 
+        setPrefs({...prefs, price: val});
+    }} 
+  />
+</div>
+        {/* --- REPLACED END --- */}
 
-        <button onClick={findCars}>{loading ? 'Searching...' : 'Find My Car'}</button>
+        <button onClick={findCars}>{loading ? 'CALCULATING...' : 'FIND MY CAR'}</button>
       </div>
 
       <div className="car-grid">
-        {cars.length > 0 ? cars.map((car, i) => (
+        {cars.map((car, i) => (
           <div key={i} className="car-card">
-            <h3>{car.name}</h3>
-            <p style={{color: '#aaa', margin: '0'}}>Model: {car.model}</p>
-            <p className="price-tag">${car.price?.toLocaleString()}</p>
-            <p>⏱️ 0-60 MPH: {car.time}s</p>
+            <span className="time-tag">⏱️ {car.Time} Seconds</span>
+            <h3>{car.Car_Name}</h3>
+            <p style={{color: '#888'}}>Model: {car.Car_Model}</p>
+            <p className="price-tag">${car.Price?.toLocaleString() ? car.Price.toLocaleString() : car.Price}</p>
           </div>
-        )) : !loading && <p>Adjust sliders and click search to see results.</p>}
+        ))}
       </div>
     </div>
   );
 }
+
 export default App;
