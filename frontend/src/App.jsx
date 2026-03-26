@@ -28,12 +28,10 @@ function App() {
 
   return (
     <div className="main-container">
-    {/* CUSTOM ERROR TOAST */}
     {error && <div className="error-toast">{error}</div>}
       <h1>🏎️ Sport Car Recommender</h1>
       
       <div className="form-box">
-        {/* --- REPLACED START --- */}
        <div className="form-group">
   <label>Target 0-60 MPH: <strong>{prefs.time}s</strong></label>
   <input 
