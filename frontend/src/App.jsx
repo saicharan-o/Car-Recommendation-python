@@ -14,12 +14,9 @@ function App() {
   
   try {
     const res = await axios.post('http://localhost:5001/api/recommend', prefs);
-    
-    // Check if Python returned an empty list []
     if (res.data && res.data.length > 0) {
       setCars(res.data);
     } else {
-      // THIS IS YOUR CUSTOM MESSAGE
       alert("No cars found matching your requirements in our dataset. Please try a different budget or speed range!");
     }
   } catch (err) {
