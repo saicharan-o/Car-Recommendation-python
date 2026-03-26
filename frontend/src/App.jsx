@@ -36,8 +36,8 @@ function App() {
   <label>Target 0-60 MPH: <strong>{prefs.time}s</strong></label>
   <input 
     type="range" 
-    min="1.8"   // Least value in CSV (Rimac)
-    max="7.0"   // High end for sport cars in CSV
+    min="1.8"   
+    max="7.0"  
     step="0.1" 
     value={prefs.time}
     onChange={e => setPrefs({...prefs, time: Number(e.target.value)})} 
