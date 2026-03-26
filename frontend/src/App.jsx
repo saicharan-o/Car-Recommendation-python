@@ -48,8 +48,8 @@ function App() {
   <label>Max Budget (USD)</label>
   <input 
     type="number" 
-    min="30000"     // Least price in CSV (approx)
-    max="4000000"   // Highest price (Bugatti is 3.9M)
+    min="30000"     
+    max="4000000" 
     value={prefs.price} 
     placeholder="e.g. 500000"
     onChange={e => {
