@@ -27,30 +27,22 @@ d_scaled = scaler.fit_transform(d[features].fillna(0))
 s = cosine_similarity(d_scaled)
 
 def get_recommendations(Time, Price, Power):
-    # 1. HARD FILTER: Only keep cars that are LESS THAN OR EQUAL to the budget
-    # This ensures "Under Budget" is the absolute priority.
     c_n = d_n[d_n["Price (in USD)"] <= Price].copy()
 
-    # 2. CHECK IF EMPTY: If no cars are under that budget, return empty immediately
     if c_n.empty:
         return []
 
-    # 3. CALCULATE RANGES (from the original data for scaling)
     p_min, p_max = d_n["Price (in USD)"].min(), d_n["Price (in USD)"].max()
     t_min, t_max = d_n["0-60 MPH Time (seconds)"].min(), d_n["0-60 MPH Time (seconds)"].max()
     
-    # Use a small epsilon to avoid division by zero
     p_range = (p_max - p_min) if (p_max - p_min) > 0 else 1
     t_range = (t_max - t_min) if (t_max - t_min) > 0 else 1
 
-    # 4. WEIGHTED SCORE (Priority: Budget 70%, Time 30%)
     c_n["p_dist"] = abs(c_n["Price (in USD)"] - Price) / p_range
     c_n["t_dist"] = abs(c_n["0-60 MPH Time (seconds)"] - Time) / t_range
     
-    # Higher weight on p_dist means the budget match is much more important
     c_n["total_diff"] = (c_n["p_dist"] * 0.7) + (c_n["t_dist"] * 0.3)
 
-    # 5. SORT BY BEST MATCH
     final_matches = c_n.sort_values("total_diff").head(10)
 
     results = []
