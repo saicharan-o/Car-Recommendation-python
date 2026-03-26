@@ -54,14 +54,11 @@ function App() {
     placeholder="e.g. 500000"
     onChange={e => {
         let val = Number(e.target.value);
-        // If user tries to go above the highest car in data, cap it at 4M
         if(val > 4000000) val = 4000000; 
         setPrefs({...prefs, price: val});
     }} 
   />
 </div>
-        {/* --- REPLACED END --- */}
-
         <button onClick={findCars}>{loading ? 'CALCULATING...' : 'FIND MY CAR'}</button>
       </div>
 
