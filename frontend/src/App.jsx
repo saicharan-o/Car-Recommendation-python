@@ -10,7 +10,7 @@ function App() {
 
   const findCars = async () => {
   setLoading(true);
-  setCars([]); // Clear old results
+  setCars([]); 
   
   try {
     const res = await axios.post('http://localhost:5001/api/recommend', prefs);
