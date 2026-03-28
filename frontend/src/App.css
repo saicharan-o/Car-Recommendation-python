@@ -4,7 +4,6 @@
   --card-bg: #161616;
 }
 
-/* Full Screen Reset */
 html, body, #root {
   margin: 0; padding: 0; width: 100%; height: 100%;
   background: var(--bg-black); color: #fff;
@@ -19,7 +18,6 @@ html, body, #root {
 
 h1 { font-size: 3rem; text-align: center; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; }
 
-/* Dashboard-style Control Panel */
 .form-box {
   background: var(--card-bg);
   padding: 30px;
@@ -49,7 +47,6 @@ button {
 
 button:hover { transform: scale(1.05); filter: brightness(1.2); }
 
-/* The Results Grid */
 .car-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
