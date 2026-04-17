@@ -4,6 +4,7 @@ import pandas as pd
 import os                                  
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
+
 base_path = os.path.dirname(__file__)
 csv_path = os.path.join(base_path, "Sport car price.csv")
 
@@ -27,6 +28,7 @@ d_scaled = scaler.fit_transform(d[features].fillna(0))
 s = cosine_similarity(d_scaled)
 
 def get_recommendations(Time, Price, Power):
+
     c_n = d_n[d_n["Price (in USD)"] <= Price].copy()
 
     if c_n.empty:
@@ -47,6 +49,7 @@ def get_recommendations(Time, Price, Power):
 
     results = []
     seen_models = set()
+    
     for _, row in final_matches.iterrows():
         model = row["Car Model"]
         if model not in seen_models:
