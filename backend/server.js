@@ -14,6 +14,7 @@ app.post('/api/recommend', (req, res) => {
     let output = "";
     python.stdout.on('data', (data) => output += data.toString());
     python.on('close', () => {
+
         try {
             res.json(JSON.parse(output)); 
         } 
@@ -21,6 +22,7 @@ app.post('/api/recommend', (req, res) => {
             console.error("Python Output Error:", output);
             res.json([]); 
         }
+        
     });
 });
 
