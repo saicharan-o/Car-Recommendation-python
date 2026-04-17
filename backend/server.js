@@ -4,8 +4,11 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
+
 app.post('/api/recommend', (req, res) => {
+
     const { time, price, power } = req.body;
     const python = spawn('python', ['../ML_Engine/CR-Backend.py', time, price, power]);
     let output = "";
@@ -20,4 +23,6 @@ app.post('/api/recommend', (req, res) => {
         }
     });
 });
+
+
 app.listen(5001, () => console.log("Backend running on Port 5001"));
