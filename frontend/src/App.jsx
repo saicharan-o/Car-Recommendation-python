@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
+
   const [prefs, setPrefs] = useState({ time: 3.5, price: 100000 });
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -13,6 +14,7 @@ function App() {
   setCars([]); 
   
   try {
+
     const res = await axios.post('http://localhost:5001/api/recommend', prefs);
     if (res.data && res.data.length > 0) {
       setCars(res.data);
@@ -24,6 +26,7 @@ function App() {
   } finally {
     setLoading(false);
   }
+
 };
 
   return (
@@ -42,7 +45,7 @@ function App() {
     value={prefs.time}
     onChange={e => setPrefs({...prefs, time: Number(e.target.value)})} 
   />
-</div>
+  </div>
 
        <div className="form-group">
   <label>Max Budget (USD)</label>
