@@ -49,9 +49,11 @@ def get_recommendations(Time, Price, Power):
 
     results = []
     seen_models = set()
-    
+
     for _, row in final_matches.iterrows():
+        
         model = row["Car Model"]
+
         if model not in seen_models:
             results.append({
                 "Car_Name": str(row["Car Name"]),
@@ -60,6 +62,7 @@ def get_recommendations(Time, Price, Power):
                 "Price": float(row["Price (in USD)"])
             })
             seen_models.add(model)
+
         if len(results) >= 5:
             break
             
@@ -67,6 +70,7 @@ def get_recommendations(Time, Price, Power):
             
 
 if __name__ == "__main__":
+
     try:
         arg_time = float(sys.argv[1])
         arg_price = float(sys.argv[2])
@@ -75,5 +79,6 @@ if __name__ == "__main__":
         output = get_recommendations(arg_time, arg_price, arg_power)
         
         print(json.dumps(output))
+
     except Exception as e:
         print(json.dumps([{"error": str(e)}]))
