@@ -46,3 +46,20 @@ Car-Recommendation/
 ├── package-lock.json
 ├── package.json
 └── README.md
+⚙️ Installation & Setup
+# 1. Clone the Repository
+Bash
+git clone https://github.com/yourusername/car-recommendation.git
+cd car-recommendation
+# 2. Install Dependencies
+Make sure you have Python installed, then install the required data science libraries:
+
+Bash
+pip install pandas scikit-learn
+# 3. Run the System
+Bash
+# First, ensure your data is processed
+python src/data_cleaning.py
+
+# Run the recommendation script to see outputs
+python src/recommendation_logic.py
