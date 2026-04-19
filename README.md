@@ -55,7 +55,10 @@ Car-Recommendation/
 ├── package-lock.json
 ├── package.json
 └── README.md
+
+
 ⚙️ Installation & Setup
+
 # 1. Clone the Repository
 Bash
 git clone https://github.com/yourusername/car-recommendation.git
