@@ -12,7 +12,9 @@ Automated Data Preprocessing: Includes robust data cleaning scripts to handle mi
 Algorithm-Driven Suggestions: Utilizes Machine Learning techniques (like Cosine Similarity) to calculate mathematical closeness between different car profiles.
 
 Scalable Logic: Designed using modular Python scripts, making it easy to plug in larger datasets or connect to a web frontend later.
+
 🛠️ Tech Stack
+
 Python: The core programming language used for scripting and logic.
 
 Pandas: Used for extensive data manipulation, cleaning, and formatting of the dataset.
