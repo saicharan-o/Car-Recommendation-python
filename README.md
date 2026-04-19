@@ -20,7 +20,10 @@ Python: The core programming language used for scripting and logic.
 Pandas: Used for extensive data manipulation, cleaning, and formatting of the dataset.
 
 Scikit-Learn: The Machine Learning library utilized for calculating similarities and building the recommendation engine.
+
+
 📁 Project Structure
+
 Car-Recommendation/
 │
 ├── backend/
