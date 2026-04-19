@@ -77,8 +77,12 @@ pip install pandas scikit-learn
 python src/data_cleaning.py
 
 # Run the recommendation script to see outputs
+
 python src/recommendation_logic.py
+
+
 🧠 How It Works (The Logic)
+
 Data Ingestion: The system loads Sport car price.csv, which contains various attributes of modern sports cars.
 
 Data Cleaning: The pandas library removes null values, standardizes text (e.g., converting strings to lowercase), and prepares numerical columns for calculation.
