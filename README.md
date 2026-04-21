@@ -24,37 +24,44 @@ Scikit-Learn: The Machine Learning library utilized for calculating similarities
 
 📁 Project Structure
 
+## Project Structure
+
+```
 Car-Recommendation/
-│
-├── backend/
-│   ├── node_modules/
-│   ├── package-lock.json
-│   ├── package.json
-│   └── server.js
-│
 ├── frontend/
-│   ├── node_modules/
 │   ├── src/
-│   │   ├── App.css
 │   │   ├── App.jsx
+│   │   ├── App.css
 │   │   ├── index.css
 │   │   └── main.jsx
-│   │
-│   ├── .gitignore
-│   ├── eslint.config.js
 │   ├── index.html
-│   ├── package-lock.json
+│   ├── vite.config.js
+│   ├── eslint.config.js
 │   ├── package.json
-│   └── vite.config.js
+│   └── package-lock.json
 │
-├── ML_Engine/
-│   ├── CR-Logic.py
-│   └── Sport car price.csv
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   └── recommend.js
+│   ├── controllers/
+│   │   └── recommendController.js
+│   ├── services/
+│   │   └── pythonBridge.js
+│   ├── package.json
+│   └── package-lock.json
 │
-├── node_modules/
-├── package-lock.json
-├── package.json
+├── ml_engine/
+│   ├── model/
+│   │   └── car_price_model.pkl
+│   ├── data/
+│   │   └── sport_car_price.csv
+│   ├── CR_Logic.py
+│   └── requirements.txt
+│
+├── .gitignore
 └── README.md
+```
 
 
 ⚙️ Installation & Setup
