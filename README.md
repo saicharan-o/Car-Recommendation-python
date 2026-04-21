@@ -14,7 +14,7 @@ Algorithm-Driven Suggestions: Utilizes Machine Learning techniques (like Cosine 
 
 Scalable Logic: Designed using modular Python scripts, making it easy to plug in larger datasets or connect to a web frontend later.
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 Python: The core programming language used for scripting and logic.
 
