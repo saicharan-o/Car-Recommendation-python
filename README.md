@@ -67,7 +67,7 @@ Car-Recommendation/
 
 ## 1. Clone the Repository
 
-git clone https://github.com/yourusername/car-recommendation.git
+git clone https://github.com/saicharan-o/Car-Recommendation-python.git
 cd car-recommendation
 
 ## 2. Install Dependencies
