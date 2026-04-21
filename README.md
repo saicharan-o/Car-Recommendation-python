@@ -23,9 +23,7 @@ Pandas: Used for extensive data manipulation, cleaning, and formatting of the da
 Scikit-Learn: The Machine Learning library utilized for calculating similarities and building the recommendation engine.
 
 
-📁 Project Structure
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 Car-Recommendation/
