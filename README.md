@@ -87,7 +87,7 @@ python src/data_cleaning.py
 python src/recommendation_logic.py
 
 
-🧠 How It Works (The Logic)
+## 🧠 How It Works (The Logic)
 
 Data Ingestion: The system loads Sport car price.csv, which contains various attributes of modern sports cars.
 
