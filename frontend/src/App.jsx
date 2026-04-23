@@ -27,7 +27,7 @@ function App() {
     }
   };
 
-  return (
+ return (
     <div className="main-container">
       <h1>🏎️ Sport Car Recommender</h1>
       
@@ -41,17 +41,27 @@ function App() {
           />
         </div>
 
+        {/* --- REPLACED SECTION START --- */}
         <div className="form-group">
-          <label>Max Budget (USD)</label>
+          <label>Max Budget (USD): <strong>${prefs.price.toLocaleString()}</strong></label>
           <input 
-            type="number" value={prefs.price} 
-            onChange={e => setPrefs({...prefs, price: Number(e.target.value)})} 
+            type="number" 
+            min="30000"     // Lowest price in your CSV is ~60k, so 30k is a safe floor
+            max="4000000"   // Highest price in your CSV is 3.9M (Bugatti)
+            value={prefs.price} 
+            onChange={e => {
+                let val = Number(e.target.value);
+                if (val > 4000000) val = 4000000; // Keep it within dataset range
+                setPrefs({...prefs, price: val});
+            }} 
           />
         </div>
+        {/* --- REPLACED SECTION END --- */}
+
         <button onClick={findCars}>{loading ? 'CALCULATING...' : 'FIND MY CAR'}</button>
       </div>
 
-      {error && <p className="error-text" style={{color: 'red'}}>{error}</p>}
+      {error && <p className="error-text" style={{color: 'red', fontWeight: 'bold'}}>{error}</p>}
 
       <div className="car-grid">
         {cars.map((car, i) => (
