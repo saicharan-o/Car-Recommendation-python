@@ -28,11 +28,13 @@ d_scaled = scaler.fit_transform(d[features].fillna(0))
 s = cosine_similarity(d_scaled)
 
 def get_recommendations(Time, Price, Power):
-
+    # 1. Try exact filtering by budget
     c_n = d_n[d_n["Price (in USD)"] <= Price].copy()
 
+    # 2. FIX: If no cars are found under that budget, don't return empty.
+    # Use the full dataset so the proximity logic can find the "closest" car.
     if c_n.empty:
-        return []
+        c_n = d_n.copy()
 
     p_min, p_max = d_n["Price (in USD)"].min(), d_n["Price (in USD)"].max()
     t_min, t_max = d_n["0-60 MPH Time (seconds)"].min(), d_n["0-60 MPH Time (seconds)"].max()
@@ -40,20 +42,21 @@ def get_recommendations(Time, Price, Power):
     p_range = (p_max - p_min) if (p_max - p_min) > 0 else 1
     t_range = (t_max - t_min) if (t_max - t_min) > 0 else 1
 
+    # 3. Proximity Calculation (Mathematical Closeness)
     c_n["p_dist"] = abs(c_n["Price (in USD)"] - Price) / p_range
     c_n["t_dist"] = abs(c_n["0-60 MPH Time (seconds)"] - Time) / t_range
     
+    # 70% weight on Price proximity, 30% on Performance
     c_n["total_diff"] = (c_n["p_dist"] * 0.7) + (c_n["t_dist"] * 0.3)
 
     final_matches = c_n.sort_values("total_diff").head(10)
+    
+    # ... (rest of your results loop remains the same)
 
     results = []
     seen_models = set()
-
     for _, row in final_matches.iterrows():
-        
         model = row["Car Model"]
-
         if model not in seen_models:
             results.append({
                 "Car_Name": str(row["Car Name"]),
@@ -62,7 +65,6 @@ def get_recommendations(Time, Price, Power):
                 "Price": float(row["Price (in USD)"])
             })
             seen_models.add(model)
-
         if len(results) >= 5:
             break
             
