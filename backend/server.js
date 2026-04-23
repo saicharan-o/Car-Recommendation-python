@@ -1,3 +1,4 @@
+const path = require('path'); // Add this at the top
 const express = require('express');
 const { spawn } = require('child_process');
 const cors = require('cors');
@@ -10,7 +11,8 @@ app.use(express.json());
 app.post('/api/recommend', (req, res) => {
 
     const { time, price, power } = req.body;
-    const python = spawn('python', ['../ML_Engine/CR-Backend.py', time, price, power]);
+    const scriptPath = path.join(__dirname, '..', 'ML_Engine', 'CR-Backend.py');
+    const python = spawn('python', [scriptPath, time, price, power]);
     let output = "";
     python.stdout.on('data', (data) => output += data.toString());
     python.on('close', () => {
@@ -27,4 +29,5 @@ app.post('/api/recommend', (req, res) => {
 });
 
 
+// server.js
 app.listen(5001, () => console.log("Backend running on Port 5001"));
