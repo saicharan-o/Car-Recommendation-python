@@ -12,16 +12,23 @@ function App() {
     setLoading(true);
     setCars([]);
     setError("");
-    
+
+    // NEW: Check for minimum budget before calling the backend
+    if (prefs.price < 30000) {
+      setError("Based on your budget, we don't have any cars in our dataset. Please try a budget above $30,000.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await axios.post('http://localhost:5001/api/recommend', prefs);
       if (res.data && res.data.length > 0) {
         setCars(res.data);
       } else {
-        setError("No cars found. Try increasing your budget!");
+        setError("No cars found matching those exact specs. Try a different range!");
       }
     } catch (err) {
-      setError("Server Error: Make sure the Backend is running.");
+      setError("Server Error: Ensure the Backend is running and folder names are correct.");
     } finally {
       setLoading(false);
     }
