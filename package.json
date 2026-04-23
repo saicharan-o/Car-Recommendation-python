@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd backend && node server.js",
-    "client": "cd frontend && npm run dev"
-  },
+  "dev": "concurrently \"cd Backend && node server.js\" \"cd Frontend && npm run dev\""
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saicharan-o/Car-Recommendation-python.git"
@@ -20,7 +18,7 @@
     "url": "https://github.com/saicharan-o/Car-Recommendation-python/issues"
   },
   "homepage": "https://github.com/saicharan-o/Car-Recommendation-python#readme",
-  "dependencies": {
+  "devDependencies": {
     "concurrently": "^9.2.1"
   }
 }
