@@ -50,7 +50,7 @@ function App() {
           <label>Max Budget (USD): <strong>${prefs.price.toLocaleString()}</strong></label>
           <input 
             type="number" 
-            min="30000"     // Lowest price in your CSV is ~60k, so 30k is a safe floor
+            min="30000"     
             max="4000000"   // Highest price in your CSV is 3.9M (Bugatti)
             value={prefs.price} 
             onChange={e => {
