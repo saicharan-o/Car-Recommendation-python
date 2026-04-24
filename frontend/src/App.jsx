@@ -55,7 +55,7 @@ function App() {
             value={prefs.price} 
             onChange={e => {
                 let val = Number(e.target.value);
-                if (val > 4000000) val = 4000000; // Keep it within dataset range
+                if (val > 4000000) val = 4000000;
                 setPrefs({...prefs, price: val});
             }} 
           />
