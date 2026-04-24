@@ -18,7 +18,6 @@ function App() {
       setLoading(false);
       return;
     }
-
     try {
       const res = await axios.post('http://localhost:5001/api/recommend', prefs);
       if (res.data && res.data.length > 0) {
@@ -47,7 +46,6 @@ function App() {
           />
         </div>
 
-        {/* --- REPLACED SECTION START --- */}
         <div className="form-group">
           <label>Max Budget (USD): <strong>${prefs.price.toLocaleString()}</strong></label>
           <input 
