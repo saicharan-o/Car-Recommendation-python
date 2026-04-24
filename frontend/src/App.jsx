@@ -60,7 +60,6 @@ function App() {
             }} 
           />
         </div>
-        {/* --- REPLACED SECTION END --- */}
 
         <button onClick={findCars}>{loading ? 'CALCULATING...' : 'FIND MY CAR'}</button>
       </div>
