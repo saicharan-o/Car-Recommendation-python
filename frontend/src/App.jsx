@@ -51,7 +51,7 @@ function App() {
           <input 
             type="number" 
             min="30000"     
-            max="4000000"   // Highest price in your CSV is 3.9M (Bugatti)
+            max="4000000"  
             value={prefs.price} 
             onChange={e => {
                 let val = Number(e.target.value);
