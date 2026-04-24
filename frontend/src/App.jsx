@@ -13,7 +13,6 @@ function App() {
     setCars([]);
     setError("");
 
-    // NEW: Check for minimum budget before calling the backend
     if (prefs.price < 30000) {
       setError("Based on your budget, we don't have any cars in our dataset. Please try a budget above $30,000.");
       setLoading(false);
