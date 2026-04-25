@@ -16,9 +16,6 @@ def get_recommendations(u_time, u_price):
     affordable = df[df["Price (in USD)"] <= u_price].copy()
     if affordable.empty: return []
 
-    # 3. WEIGHTED SCORE:
-    # We want cars CLOSEST to the budget (high budget = high price cars)
-    # Price is 80% weight, Speed is 20% weight
     p_max = df["Price (in USD)"].max()
     t_max = df["0-60 MPH Time (seconds)"].max()
 
