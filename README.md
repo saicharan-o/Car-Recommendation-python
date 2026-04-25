@@ -27,7 +27,16 @@ Scikit-Learn: The Machine Learning library utilized for calculating similarities
 
 ```
 Car-Recommendation/
+├── backend/
+│   ├── node_modules
+│   ├── CR-Backend.py
+│   ├── server.js
+│   ├── Sport car price.csv
+│   ├── package.json
+│   └── package-lock.json
+│
 ├── frontend/
+│   ├── node_modules
 │   ├── src/
 │   │   ├── App.jsx
 │   │   ├── App.css
@@ -39,25 +48,9 @@ Car-Recommendation/
 │   ├── package.json
 │   └── package-lock.json
 │
-├── backend/
-│   ├── server.js
-│   ├── routes/
-│   │   └── recommend.js
-│   ├── controllers/
-│   │   └── recommendController.js
-│   ├── services/
-│   │   └── pythonBridge.js
-│   ├── package.json
-│   └── package-lock.json
-│
-├── ml_engine/
-│   ├── model/
-│   │   └── car_price_model.pkl
-│   ├── data/
-│   │   └── sport_car_price.csv
-│   ├── CR_Logic.py
-│   └── requirements.txt
-│
+├── node_modules
+├── package.json
+├── package-lock.json
 ├── .gitignore
 └── README.md
 ```
