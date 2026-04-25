@@ -8,7 +8,6 @@ def get_recommendations(u_time, u_price):
     
     df = pd.read_csv(csv_path)
 
-    # 1. Clean data
     df["Price (in USD)"] = df["Price (in USD)"].astype(str).str.replace(r'[\$,"]', '', regex=True)
     df["Price (in USD)"] = pd.to_numeric(df["Price (in USD)"], errors="coerce")
     df["0-60 MPH Time (seconds)"] = pd.to_numeric(df["0-60 MPH Time (seconds)"], errors="coerce")
