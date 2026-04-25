@@ -22,8 +22,6 @@ def get_recommendations(u_time, u_price):
     affordable["score"] = (abs(affordable["Price (in USD)"] - u_price) / p_max * 0.8) + \
                           (abs(affordable["0-60 MPH Time (seconds)"] - u_time) / t_max * 0.2)
 
-    # 4. REMOVE DUPLICATES (Fixes the Chevrolet repeating problem)
-    # Sort by score first, then drop duplicates so we keep the best version
     affordable = affordable.sort_values("score")
     unique_cars = affordable.drop_duplicates(subset=["Car Name", "Car Model"])
 
