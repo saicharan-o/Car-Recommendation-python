@@ -19,7 +19,6 @@ def get_recommendations(u_time, u_price):
     p_max = df["Price (in USD)"].max()
     t_max = df["0-60 MPH Time (seconds)"].max()
 
-    # score: 0 is perfect. We find cars where (u_price - car_price) is small.
     affordable["score"] = (abs(affordable["Price (in USD)"] - u_price) / p_max * 0.8) + \
                           (abs(affordable["0-60 MPH Time (seconds)"] - u_time) / t_max * 0.2)
 
