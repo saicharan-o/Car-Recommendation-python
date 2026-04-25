@@ -13,7 +13,6 @@ def get_recommendations(u_time, u_price):
     df["0-60 MPH Time (seconds)"] = pd.to_numeric(df["0-60 MPH Time (seconds)"], errors="coerce")
     df.dropna(subset=["Price (in USD)", "0-60 MPH Time (seconds)"], inplace=True)
 
-    # 2. Filter: Only cars the user can afford
     affordable = df[df["Price (in USD)"] <= u_price].copy()
     if affordable.empty: return []
 
