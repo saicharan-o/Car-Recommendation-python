@@ -13,7 +13,6 @@ app.post('/api/recommend', (req, res) => {
     
     const scriptPath = path.join(__dirname, 'CR-Backend.py');
 
-    // Launch python
     const python = spawn('python', [scriptPath, time, price]);
     
     let output = "";
