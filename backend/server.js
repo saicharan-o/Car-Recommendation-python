@@ -8,7 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// THIS IS THE SECTION YOU ASKED ABOUT
 app.post('/api/recommend', (req, res) => {
     const { time, price } = req.body;
     
