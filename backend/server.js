@@ -11,7 +11,6 @@ app.use(express.json());
 app.post('/api/recommend', (req, res) => {
     const { time, price } = req.body;
     
-    // FIX: Using __dirname ensures it looks in the folder where server.js is located
     const scriptPath = path.join(__dirname, 'CR-Backend.py');
 
     // Launch python
