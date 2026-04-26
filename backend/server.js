@@ -6,6 +6,7 @@ const path = require('path');
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
 
 app.post('/api/recommend', (req, res) => {
@@ -34,4 +35,5 @@ app.post('/api/recommend', (req, res) => {
 });
 
 const PORT = 5001;
+
 app.listen(PORT, () => console.log(`Backend running on Port ${PORT}`));
